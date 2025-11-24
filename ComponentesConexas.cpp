@@ -114,7 +114,7 @@ int main() {
         visitado.assign(n, false);
         int comp = 0;
 
-        cout << "\n=== Componentes Fuertemente Conexas (SCC) ===\n";
+        cout << "\nComponentes Fuertemente Conexas (SCC)\n";
 
         while (!pila.empty()) {
             int u = pila.top();
