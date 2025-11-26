@@ -4,6 +4,8 @@
 #include <queue>
 using namespace std;
 
+
+//comentario ....
 vector<vector<int> > adj;       
 vector<vector<int> > adj_rev;   
 vector<bool> visitado;
@@ -31,6 +33,7 @@ void bfs(int inicio, vector<int>& componente, const vector<vector<int> >& g) {
 stack<int> pila;
 
 void dfs1(int u) {
+
     visitado[u] = true;
     for (int i = 0; i < adj[u].size(); i++) {
         int v = adj[u][i];
@@ -89,7 +92,7 @@ int main() {
 
     if (!dirigido) {
         visitado.assign(n, false);
-        cout << "\n=== Componentes Conexas ===\n";
+        cout << "\nComponentes Conexas\n";
         int comp = 0;
 
         for (int i = 0; i < n; i++) {
