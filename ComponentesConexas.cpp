@@ -4,12 +4,12 @@
 #include <queue>
 using namespace std;
 
-
-//comentario ....
+//Se crean los vectores de vectores a utilizar para las adyacencias del grafo y el vector para visitados
 vector<vector<int> > adj;       
 vector<vector<int> > adj_rev;   
 vector<bool> visitado;
 
+//Función BFS para grafos no dirigidos
 void bfs(int inicio, vector<int>& componente, const vector<vector<int> >& g) {
     queue<int> q;
     q.push(inicio);
@@ -30,8 +30,10 @@ void bfs(int inicio, vector<int>& componente, const vector<vector<int> >& g) {
     }
 }
 
+//Se crea la pila para ambos DFS
 stack<int> pila;
 
+//Función DFS1 para primera parte del algoritmo de Kosaraju
 void dfs1(int u) {
 
     visitado[u] = true;
@@ -42,6 +44,7 @@ void dfs1(int u) {
     pila.push(u);
 }
 
+//Función DFS2 para algoritmo de Kosaraju (para la adyacencia revertida)
 void dfs2(int u, vector<int>& componente) {
     visitado[u] = true;
     componente.push_back(u);
@@ -63,6 +66,7 @@ int main() {
     cout << "¿Es dirigido? (1 = si, 0 = no): ";
     cin >> dirigido;
 
+    //En componentes conexas no afecta si un grafo es ponderado o no para el resultado
     cout << "¿Es ponderado? (1 = si, 0 = no): ";
     cin >> ponderado;
 
