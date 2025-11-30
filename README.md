@@ -61,10 +61,49 @@ Por eso, este programa funciona únicamente para **grafos no dirigidos**, que es
 
 ---
 
+# h Pareo (Matching) en Grafos C++
 
 
+- **Matching maximal** en grafos no dirigidos  
+- **Matching máximo** para grafos bipartitos usando el algoritmo de **Kuhn**
 
-##  Cómo Compilar
+Incluye:
+- Implementación en C++ 
+- Compatible con grafos ponderados y no ponderados (los pesos se ignoran para el pareo)
+- Menú interactivo
+
+---
+
+## ¿Por qué este programa NO soporta grafos dirigidos?
+
+El *matching* (pareo) se define **solo en grafos no dirigidos**, porque un matching consiste en seleccionar **aristas que no compartan vértices**, y esa definición **asume relaciones bidireccionales**.
+
+En grafos dirigidos:
+
+- Las aristas tienen dirección, así que la relación no es simétrica.
+- Una arista `u → v` no representa un emparejamiento natural.
+- Los algoritmos clásicos (Maximal, Kuhn, Hungarian, Blossom) **requieren aristas no dirigidas**.
+
+Por lo tanto, el pareo **no tiene sentido matemático** en grafos dirigidos, y el proyecto se limita a grafos no dirigidos.
+
+---
+
+## Funcionalidades
+
+### Matching maximal
+Método greedy:
+- Recorre todas las aristas
+- Agrega la arista al matching si ninguno de sus extremos está emparejado
+
+### Matching máximo (bipartitos)
+Implementado con:
+- **Algoritmo de Kuhn** (DFS que expande el matching)
+
+Requiere que el usuario indique las dos particiones **L** y **R** del grafo.
+
+---
+
+##  Para compilar
 
 Debes de tener **g++** instalado (MinGW en Windows o GNU/G++ en Linux/Mac).
 
