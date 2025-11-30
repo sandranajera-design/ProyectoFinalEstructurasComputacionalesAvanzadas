@@ -48,7 +48,6 @@ El programa verifica estas tres condiciones usando DFS.
 Porque el concepto formal de **árbol** solo existe para grafos **no dirigidos**.
 
 - En grafos dirigidos, la conectividad se divide en *conectado*, *fuertemente conectado* y *débilmente conectado*.
-- En grafos dirigidos, la existencia de aristas como \( u \rightarrow v \) y \( v \rightarrow u \) altera la definición tradicional de árbol.
 - Un árbol **siempre** es una estructura en la que las aristas **no tienen dirección**.
 
 Si el grafo fuera dirigido, habría que usar definiciones distintas como:
