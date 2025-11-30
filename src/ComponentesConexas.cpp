@@ -4,12 +4,12 @@
 #include <queue>
 using namespace std;
 
-//Se crean los vectores de vectores a utilizar para las adyacencias del grafo y el vector para visitados
+//Listas de adyacencia para el grafo y el vector para visitados
 vector<vector<int> > adj;       
 vector<vector<int> > adj_rev;   
 vector<bool> visitado;
 
-//Función BFS para grafos no dirigidos
+//Función BFS para componentes conexas en grafos no dirigidos
 void bfs(int inicio, vector<int>& componente, const vector<vector<int> >& g) {
     queue<int> q;
     q.push(inicio);
@@ -18,33 +18,35 @@ void bfs(int inicio, vector<int>& componente, const vector<vector<int> >& g) {
     while (!q.empty()) {
         int u = q.front(); 
         q.pop();
-        componente.push_back(u);
+        componente.push_back(u); //se agrega el nodo a la componente actual
 
         for (int i = 0; i < g[u].size(); i++) {
             int v = g[u][i];
             if (!visitado[v]) {
                 visitado[v] = true;
-                q.push(v);
+                q.push(v); //continua con el BFS
             }
         }
     }
 }
 
-//Se crea la pila para ambos DFS
+//Se crea la pila para kosaraju
 stack<int> pila;
 
-//Función DFS1 para primera parte del algoritmo de Kosaraju
+//Función DFS1 para primera parte del algoritmo de Kosaraju, llena la pila
 void dfs1(int u) {
 
     visitado[u] = true;
+    //explora vecinos
     for (int i = 0; i < adj[u].size(); i++) {
         int v = adj[u][i];
         if (!visitado[v]) dfs1(v);
     }
+    //cuando termina el DFS en u, se mete en la pila
     pila.push(u);
 }
 
-//Función DFS2 para algoritmo de Kosaraju (para la adyacencia revertida)
+//Función DFS2 para el grafo invertido, extrae una SCC
 void dfs2(int u, vector<int>& componente) {
     visitado[u] = true;
     componente.push_back(u);
@@ -70,6 +72,7 @@ int main() {
     cout << "¿Es ponderado? (1 = si, 0 = no): ";
     cin >> ponderado;
 
+    //inicializa las listas de adyacencia
     adj.assign(n, vector<int>());
     adj_rev.assign(n, vector<int>());
 
@@ -79,6 +82,7 @@ int main() {
     else
         cout << "(formato: u v)\n";
 
+        //lee el grafo
     for (int i = 0; i < m; i++) {
         int u, v, w = 1;
         if (ponderado) cin >> u >> v >> w;
@@ -115,9 +119,11 @@ int main() {
 
     else {
         visitado.assign(n, false);
+        //DFS para llenar la pila
         for (int i = 0; i < n; i++)
             if (!visitado[i]) dfs1(i);
 
+        //DFS en el grafo invertido, con el orden de la pila
         visitado.assign(n, false);
         int comp = 0;
 
