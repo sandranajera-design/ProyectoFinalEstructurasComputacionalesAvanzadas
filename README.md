@@ -61,7 +61,7 @@ Por eso, este programa funciona únicamente para **grafos no dirigidos**, que es
 
 ---
 
-# h Pareo (Matching) en Grafos C++
+# h Pareo (Matching) en Grafos
 
 
 - **Matching maximal** en grafos no dirigidos  
