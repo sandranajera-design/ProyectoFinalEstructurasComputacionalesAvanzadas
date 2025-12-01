@@ -102,6 +102,62 @@ Implementado con:
 Requiere que el usuario indique las dos particiones **L** y **R** del grafo.
 
 ---
+## i Pareos Perfectos y Maximales
+
+Este programa es Capaz de calcular **pareos (matchings)** en grafos tanto **bipartitos** como **no bipartitos**
+---
+
+## ¿Qué hace el programa?
+
+El programa construye un grafo a partir de la **lista de adyacencia que ingresa el usuario**, y después permite obtener:
+
+###  Matching maximal  
+Usando un algoritmo **greedy**, el programa busca formar tantas parejas como sea posible, sin permitir que un nodo participe en más de un emparejamiento.  
+Este matching:
+
+- Funciona en **bipartitos y no bipartitos**  
+- Es **válido** para cualquier grafo  
+- Siempre garantiza que no se puede agregar otra arista al matching sin romper la validez
+
+### Detecta un matching perfecto  
+Si durante el matching maximal todos los nodos logran emparejarse, entonces concluimos que existe un **matching perfecto**.  
+Si al menos un nodo queda libre, el grafo **no tiene** matching perfecto detectable con el método aplicado.
+
+---
+
+## ¿Por qué NO usamos Kuhn ni Blossom?
+
+### Kuhn (DFS para matching máximo)  
+ no lo implementamos porque:
+
+- Kuhn **solo funciona en grafos bipartitos**  
+- Nuestro programa debe aceptar grafos **generales**, donde no existe una división L y R  
+- El usuario no proporciona una bipartición del grafo  
+- Agregar Kuhn habría hecho el menú más complejo sin aportar a la parte de grafos no bipartitos  
+
+Por lo tanto, no cumple con el objetivo del proyecto.
+
+---
+
+### Blossom (Edmonds)  
+Este algoritmo sí funciona en grafos no bipartitos y sirve para matching máximo, pero:
+
+- Es **considerablemente complejo**  
+- Requiere manejo avanzado de ciclos impares y contracciones.
+
+Así que, decidimos no incluir Blossom para evitar complicar el código.
+
+---
+
+## Así logramos
+
+### Matching maximal  
+En bipartitos y no bipartitos.  
+
+### Verificación de matching perfecto  
+Si todos los nodos quedaron emparejados entonces es perfecto.
+
+---
 
 ##  Para compilar
 
