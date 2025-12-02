@@ -1,0 +1,5 @@
+# Ignore executables
+*.exe
+
+# Code Runner temp files
+tempCodeRunnerFile*

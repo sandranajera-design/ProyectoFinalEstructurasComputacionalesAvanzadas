@@ -163,3 +163,52 @@ Si todos los nodos quedaron emparejados entonces es perfecto.
 
 Debes de tener **g++** instalado (MinGW en Windows o GNU/G++ en Linux/Mac).
 
+# f Floyd–Warshall — Caminos más cortos entre todos los pares
+
+## ¿Cómo funciona?:
+
+Actualiza iterativamente la matriz de distancias probando si un camino i -> k -> j es mejor que el actual i -> j
+
+## El programa (src/FloydWarshall.cpp) permite:
+
+-Elegir si el grafo es dirigido o no dirigido
+-Trabajar con grafos ponderados con pesos positivos, cero o negativos
+-Ingresar las distancias manualmente
+-Obtener la matriz completa de distancias más cortas entre cada par de nodos
+
+## ¿Qué tipo de grafos soporta?
+
+Dirigidos: totalmente soportados
+
+No dirigidos: totalmente soportados
+
+Ponderados: permitido (los pesos pueden ser positivos, cero o negativos)
+
+No ponderados: también funciona usando 1 como peso de cada arista
+
+### Limitación importante:
+El algoritmo no puede detectar ciclos negativos y no funciona correctamente si existen.
+Floyd–Warshall asume que las distancias disminuyen de manera controlada; un ciclo negativo produciría mejoras infinitas.
+
+## ¿Por qué se eligió Floyd–Warshall?
+
+Resuelve el problema de caminos más cortos entre todos los pares de nodos.
+Es fácil de implementar y entender en comparación con alternativas más complejas.
+Produce una matriz completa de distancias, útil para análisis posteriores.
+Útil cuando el grafo es denso o el número de nodos es moderado.
+
+## Pruebas
+
+En /tests/test_floyd_warshall.cpp se incluyen tres pruebas automáticas:
+
+### Test 1 — Grafo no dirigido
+
+Comprueba que el algoritmo produzca las distancias correctas en un grafo simple.
+
+### Test 2 — Grafo dirigido
+
+Valida que el programa funcione correctamente cuando las direcciones afectan los caminos.
+
+### Test 3 — Pesos negativos (sin ciclos negativos)
+
+Verifica que Floyd–Warshall maneje correctamente pesos negativos siempre que no haya ciclos negativos.
