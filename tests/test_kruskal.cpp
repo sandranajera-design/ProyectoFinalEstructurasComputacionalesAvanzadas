@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
-#include "C:\Users\adria\Documents\ProyectoFinalEstructurasComputacionalesAvanzadas-1\src\KruskalLib.h"
+#include "../src/KruskalLib.h"
 using namespace std;
 
 void test1() {
