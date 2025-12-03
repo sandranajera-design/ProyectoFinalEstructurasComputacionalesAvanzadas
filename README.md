@@ -1,5 +1,44 @@
+# Grafos — Representaciones y recorridos
 
-## c Componentes Conexas
+## a Representaciones de grafos
+
+### Matriz de adyacencia
+Es una matriz de tamaño nxn que nos indica si existe un arco entre dos nodos.  
+Ventajas: búsqueda O(1).  
+Desventajas: mucho espacio para grafos dispersos.  
+
+### Lista de adyacencia
+Cada nodo tiene una lista de vecinos.  
+Ventajas: eficiente en espacio O(V+E), ideal para DFS/BFS.  
+Desventajas: preguntar si existe un arco específico no es O(1).  
+
+### Lista de arcos (Edge List)
+Se enumeran todas las aristas.  
+Ventajas: fácil de leer y almacenar.  
+Desventajas: no eficiente para recorridos.  
+
+### Matriz de incidencia
+Matriz V×E donde filas=vertices, columnas=aristas.  
+- -1 en origen  
+- +1 en destino  
+Ventajas: útil en flujos y ciclos.  
+Desventajas: mucho espacio O(VE).  
+
+### Diccionario / Hash Map
+Similar a la lista de adyacencia, pero dinámica y flexible.
+
+---
+
+## b Algoritmos de recorrido
+
+### DFS (Depth-First Search)
+Recorre un grafo visitando vecinos en profundidad antes de retroceder.  
+
+### BFS (Breadth-First Search)
+Recorre un grafo visitando vecinos por niveles (anchura).
+
+
+# c Componentes Conexas
 
 El programa (`src/ComponentesConexas.cpp`) permite:
 
