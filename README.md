@@ -152,7 +152,55 @@ Por eso, este programa funciona únicamente para **grafos no dirigidos**, que es
 
 ---
 
+# f Árbol de expansión mínima/máxima — Kruskal
+
+## ¿Cómo funciona?
+
+El algoritmo construye un árbol de expansión mínima (MST) o máxima (MaxST) usando Kruskal:
+- Ordena todas las aristas por peso
+- Agrega cada arista al árbol si no genera ciclo
+- Usa unión de conjuntos (Union-Find simple) sin optimización avanzada
+
+## El programa (src/Kruskal.cpp) permite:
+
+- Elegir nodos y aristas
+- Calcular MST y MaxST
+- Mostrar aristas seleccionadas y peso total
+
+## ¿Qué tipo de grafos soporta?
+
+- Dirigidos: no aplica, Kruskal se usa solo para no dirigidos
+- No dirigidos: totalmente soportados
+- Ponderados: obligatorio para calcular peso
+- No ponderados: no tiene sentido, peso se ignora
+
+## Importante
+
+- Nodos ingresados del 1 a n para facilidad de usuario
+- Validación de índices y formato de entrada
+- MaxST se obtiene invirtiendo orden de pesos
+- MST y MaxST funcionan independientemente de la densidad del grafo
+
+## Pruebas
+
+En /tests/test_kruskal.cpp se incluyen tres pruebas:
+
+### Test 1 — Grafo de 4 nodos
+
+Verifica MST y MaxST
+
+### Test 2 — Grafo de 5 nodos
+
+Verifica MST y MaxST con aristas más complejas
+
+### Test 3 — Grafo de 3 nodos
+
+Comprueba casos con aristas grandes y MST vs MaxST
+
+---
+
 # g Bicoloración — Verificación de grafo bipartito con BFS
+
 ## ¿Cómo funciona?
 
 El algoritmo usa BFS para intentar asignar colores 1 y –1.
