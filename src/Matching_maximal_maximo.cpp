@@ -1,3 +1,12 @@
+/*
+Sandra Lizeth Nájera Quesada
+José Adrián Martínez Pérez
+
+    Estructuras Computacionales Avanzadas
+    Tercer semestre
+    Algoritmo para emparejamiento maximal y máximo.
+*/
+
 #include <iostream>
 #include <vector>
 using namespace std;

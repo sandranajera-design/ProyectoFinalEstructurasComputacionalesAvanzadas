@@ -9,6 +9,7 @@ vector<vector<int>> adj_rev;  // grafo invertido
 vector<bool> visited;
 stack<int> pila;
 
+// DFS para componentes conexas (NO dirigido)
 void dfs(int u, vector<int>& comp) {
     visited[u] = true;
     comp.push_back(u);
@@ -32,6 +33,7 @@ vector<vector<int>> componentesConexas(int n) {
     return comps;
 }
 
+// Primera pasada de Kosaraju
 void dfs1(int u) {
     visited[u] = true;
     for (int v : adj[u]) {
@@ -40,6 +42,7 @@ void dfs1(int u) {
     pila.push(u);
 }
 
+// Segunda pasada en el grafo invertido
 void dfs2(int u, vector<int>& comp) {
     visited[u] = true;
     comp.push_back(u);
@@ -103,7 +106,6 @@ int main() {
              << compsND.size() << "\n";
 
 
-
     cout << "  TEST 2: Grafo invertido\n";
 
     adj_rev = vector<vector<int>>(n);
@@ -116,7 +118,6 @@ int main() {
     else
         cout << "ERROR en grafo invertido\n";
 
- 
 
     cout << "  TEST 3: SCC con Kosaraju\n";
 
