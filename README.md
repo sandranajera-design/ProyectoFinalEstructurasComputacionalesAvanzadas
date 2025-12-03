@@ -27,6 +27,58 @@ Evalúa un grafo dirigido con dos ciclos para confirmar que el algoritmo detecta
 
 ---
 
+# d Floyd–Warshall — Caminos más cortos entre todos los pares
+
+## ¿Cómo funciona?:
+
+Actualiza iterativamente la matriz de distancias probando si un camino i -> k -> j es mejor que el actual i -> j
+
+## El programa (src/FloydWarshall.cpp) permite:
+
+-Elegir si el grafo es dirigido o no dirigido
+-Trabajar con grafos ponderados con pesos positivos, cero o negativos
+-Ingresar las distancias manualmente
+-Obtener la matriz completa de distancias más cortas entre cada par de nodos
+
+## ¿Qué tipo de grafos soporta?
+
+Dirigidos: totalmente soportados
+
+No dirigidos: totalmente soportados
+
+Ponderados: permitido (los pesos pueden ser positivos, cero o negativos)
+
+No ponderados: también funciona usando 1 como peso de cada arista
+
+### Limitación importante:
+El algoritmo no puede detectar ciclos negativos y no funciona correctamente si existen.
+Floyd–Warshall asume que las distancias disminuyen de manera controlada; un ciclo negativo produciría mejoras infinitas.
+
+## ¿Por qué se eligió Floyd–Warshall?
+
+Resuelve el problema de caminos más cortos entre todos los pares de nodos.
+Es fácil de implementar y entender en comparación con alternativas más complejas.
+Produce una matriz completa de distancias, útil para análisis posteriores.
+Útil cuando el grafo es denso o el número de nodos es moderado.
+
+## Pruebas
+
+En /tests/test_floyd_warshall.cpp se incluyen tres pruebas automáticas:
+
+### Test 1 — Grafo no dirigido
+
+Comprueba que el algoritmo produzca las distancias correctas en un grafo simple.
+
+### Test 2 — Grafo dirigido
+
+Valida que el programa funcione correctamente cuando las direcciones afectan los caminos.
+
+### Test 3 — Pesos negativos (sin ciclos negativos)
+
+Verifica que Floyd–Warshall maneje correctamente pesos negativos siempre que no haya ciclos negativos.
+
+---
+
 # e Verificar si un grafo es un árbol
 
 Este proyecto implementa un algoritmo sencillo para determinar si un **grafo no dirigido** es un **árbol**.
@@ -58,6 +110,65 @@ Si el grafo fuera dirigido, habría que usar definiciones distintas como:
 Esos conceptos se consideran aparte y **no equivalen a un árbol tradicional**.
 
 Por eso, este programa funciona únicamente para **grafos no dirigidos**, que es la definición clásica usada en teoría de grafos.
+
+---
+
+# g Bicoloración — Verificación de grafo bipartito con BFS
+## ¿Cómo funciona?
+
+El algoritmo usa BFS para intentar asignar colores 1 y –1.
+Si algún nodo intenta recibir el mismo color que su vecino, existe un ciclo impar y el grafo no es bipartito.
+
+## El programa (src/Bipartito.cpp) permite:
+
+Elegir si el grafo es dirigido o no dirigido
+
+Ingresar nodos y aristas manualmente
+
+Detectar si el grafo es bipartito
+
+Mostrar los dos conjuntos bipartitos
+
+Procesar grafos con múltiples componentes
+
+## ¿Qué tipo de grafos soporta?
+
+Dirigidos: permitido, pero no tiene utilidad práctica para bipartición (explicado abajo)
+No dirigidos: totalmente soportados
+Ponderados: no importa, la bipartición solo depende de la estructura
+No ponderados: igualmente válido
+
+### Importante:
+
+La bipartición solo tiene sentido en grafos NO dirigidos.
+Si el usuario elige “dirigido”, el programa funciona técnicamente, pero se aclara que no es una aplicación realista de bipartición.
+
+## ¿Por qué se eligió BFS?
+
+Rápido y simple de implementar
+
+Funciona perfectamente para detectar ciclos impares
+
+Más intuitivo para estudiantes que DFS recursivo
+
+Permite procesar componentes desconectadas sin problemas
+
+
+## Pruebas
+
+En /tests/test_bipartito.cpp se incluyen tres pruebas:
+
+### Test 1 — Grafo bipartito simple
+
+Verifica que el algoritmo detecte correctamente la bipartición.
+
+### Test 2 — Ciclo impar
+
+Comprueba que el programa detecte que el grafo NO es bipartito.
+
+### Test 3 — Grafo con varias componentes
+
+Asegura que se procesen correctamente todos los subgrafos.
 
 ---
 
@@ -163,52 +274,4 @@ Si todos los nodos quedaron emparejados entonces es perfecto.
 
 Debes de tener **g++** instalado (MinGW en Windows o GNU/G++ en Linux/Mac).
 
-# f Floyd–Warshall — Caminos más cortos entre todos los pares
-
-## ¿Cómo funciona?:
-
-Actualiza iterativamente la matriz de distancias probando si un camino i -> k -> j es mejor que el actual i -> j
-
-## El programa (src/FloydWarshall.cpp) permite:
-
--Elegir si el grafo es dirigido o no dirigido
--Trabajar con grafos ponderados con pesos positivos, cero o negativos
--Ingresar las distancias manualmente
--Obtener la matriz completa de distancias más cortas entre cada par de nodos
-
-## ¿Qué tipo de grafos soporta?
-
-Dirigidos: totalmente soportados
-
-No dirigidos: totalmente soportados
-
-Ponderados: permitido (los pesos pueden ser positivos, cero o negativos)
-
-No ponderados: también funciona usando 1 como peso de cada arista
-
-### Limitación importante:
-El algoritmo no puede detectar ciclos negativos y no funciona correctamente si existen.
-Floyd–Warshall asume que las distancias disminuyen de manera controlada; un ciclo negativo produciría mejoras infinitas.
-
-## ¿Por qué se eligió Floyd–Warshall?
-
-Resuelve el problema de caminos más cortos entre todos los pares de nodos.
-Es fácil de implementar y entender en comparación con alternativas más complejas.
-Produce una matriz completa de distancias, útil para análisis posteriores.
-Útil cuando el grafo es denso o el número de nodos es moderado.
-
-## Pruebas
-
-En /tests/test_floyd_warshall.cpp se incluyen tres pruebas automáticas:
-
-### Test 1 — Grafo no dirigido
-
-Comprueba que el algoritmo produzca las distancias correctas en un grafo simple.
-
-### Test 2 — Grafo dirigido
-
-Valida que el programa funcione correctamente cuando las direcciones afectan los caminos.
-
-### Test 3 — Pesos negativos (sin ciclos negativos)
-
-Verifica que Floyd–Warshall maneje correctamente pesos negativos siempre que no haya ciclos negativos.
+---
