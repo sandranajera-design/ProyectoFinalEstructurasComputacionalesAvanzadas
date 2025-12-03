@@ -1,3 +1,12 @@
+/*
+Sandra Lizeth Nájera Quesada
+José Adrián Martínez Pérez
+
+    Estructuras Computacionales Avanzadas
+    Tercer semestre
+    Algoritmo para determinar si un grafo es árbol o no
+*/
+
 #include <iostream>
 #include <vector>
 using namespace std;

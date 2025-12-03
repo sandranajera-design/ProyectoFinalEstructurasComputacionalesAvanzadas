@@ -1,3 +1,12 @@
+/*
+Sandra Lizeth Nájera Quesada
+José Adrián Martínez Pérez
+
+    Estructuras Computacionales Avanzadas
+    Tercer semestre
+    Algoritmo para pareos perfectos y maximales.
+*/
+
 #include <iostream>
 #include <vector>
 #include <queue>

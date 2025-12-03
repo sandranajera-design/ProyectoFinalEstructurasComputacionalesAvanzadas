@@ -1,3 +1,11 @@
+/*
+Sandra Lizeth Nájera Quesada
+José Adrián Martínez Pérez
+
+    Estructuras Computacionales Avanzadas
+    Tercer semestre
+    Algoritmo para obtener componentes conexas.
+*/
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -82,11 +90,14 @@ int main() {
     else
         cout << "(formato: u v)\n";
 
-        //lee el grafo
+    //lee el grafo
     for (int i = 0; i < m; i++) {
         int u, v, w = 1;
         if (ponderado) cin >> u >> v >> w;
         else cin >> u >> v;
+
+        u--;  // Para que el usuario pueda ingresar 1 a n
+        v--;  
 
         adj[u].push_back(v);
 
@@ -111,7 +122,7 @@ int main() {
                 comp++;
                 cout << "Componente " << comp << ": { ";
                 for (int j = 0; j < componente.size(); j++)
-                    cout << componente[j] << " ";
+                    cout << componente[j] + 1 << " "; // imprimir como 1 a n
                 cout << "}\n";
             }
         }
@@ -140,7 +151,7 @@ int main() {
                 comp++;
                 cout << "SCC " << comp << ": { ";
                 for (int j = 0; j < componente.size(); j++)
-                    cout << componente[j] << " ";
+                    cout << componente[j] + 1 << " "; // imprimir como 1 a n
                 cout << "}\n";
             }
         }
